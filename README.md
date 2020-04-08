@@ -6,3 +6,4 @@ This is a more pythonic implementation of OpenSeesPy library to model and analyz
 2. [Bathe Model Problem (Dynamic Analysis - Linear)](/Bathe%20Model%20Problem.ipynb)
 3. [Elastoplastic SDOF system (Dynamic Analysis)](/Elastoplastic%20SDOF%20system.ipynb)
 4. [Elastic Response Spectra](/Elastic%20Response%20Spectra.ipynb)
+5. [Curved arch (Dynamic Snap-Through)](/Curved%20arch.ipynb)
