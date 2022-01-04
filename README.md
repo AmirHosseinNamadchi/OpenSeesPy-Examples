@@ -9,3 +9,4 @@ This is a more pythonic implementation of OpenSeesPy library to model and analyz
 5. [Curved arch (Dynamic Snap-Through)](/Curved%20arch.ipynb)
 6. [Nonlinear seismic response of a MRF](/NLSMRF.ipynb)
 7. [Gravity, Modal, Pushover and Time-History Analysis of 2-Story Steel MRF](/Two%20Story%20Steel%20MRF%20(FGU).ipynb)
+8. [Gravity, Modal, Pushover and Time-History Analysis of 1-Story RC 3D Frame](/Reinforced%Concrete%3D%Frame%(FGU).ipynb)
