@@ -268,8 +268,9 @@ def run_gravity(steps = 10):
     
     ops.initialize()
     # Records the response of a number of nodes at every converged step
-    ops.recorder('Node', '-file', 'FGU_RC3DF_files/Gravity_Reactions.out',
-                 '-time','-node', *list(range(1,5)), '-dof', *list(range(1,7)), 'reaction')
+    ops.recorder('Node', '-file', 
+                os.path.join('FGU_RC3DF_files','Gravity_Reactions.out'),
+        '-time','-node', *list(range(1,5)), '-dof', *list(range(1,7)), 'reaction')
 
     # enforces the constraints using the transformation method
     ops.constraints('Transformation')
@@ -319,14 +320,14 @@ def run_modal(n_evs = 3):
 
     # Records Eigenvector entries for Node 1,3 & 5 @ dof 1 
     ops.recorder('Node', '-file',
-                 'FGU_RC3DF_files/ModalAnalysis_Node_EigenVectors_EigenVec1.out',
+            os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVec1.out'),                 
                  '-node', *list(range(5,9)), '-dof', *[1,2], 'eigen 1')
     ops.recorder('Node', '-file',
-                 'FGU_RC3DF_files/ModalAnalysis_Node_EigenVectors_EigenVec2.out',
+            os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVec2.out'),
                  '-node', *list(range(5,9)), '-dof', *[1,2], 'eigen 2')
 
     ops.recorder('Node', '-file',
-                 'FGU_RC3DF_files/ModalAnalysis_Node_EigenVectors_EigenVec3.out',
+            os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVec3.out'),
                  '-node', *list(range(5,9)), '-dof', *[1,2], 'eigen 3')                 
 
     # Constructs a transformation constraint handler, 
@@ -358,7 +359,7 @@ def run_modal(n_evs = 3):
     lamda = np.array(ops.eigen(n_evs))
 
     # Writing Eigenvalue information to file
-    with open("FGU_RC3DF_files/ModalAnalysis_Node_EigenVectors_EigenVal.out", "w") as eig_file:
+    with open(os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVal.out'), "w") as eig_file:
         # Writing data to a file
         eig_file.write("lambda omega period frequency\n")
         for l in lamda:
@@ -487,13 +488,13 @@ def run_time_history(direction = 'X', g_motion_id = 1, scaling_id = 1,
         file_names = ['TimeHistory_Horizontal_ReactionsX'+str(g_motion_id)+'.'+str(scaling_id)+'.out',
                       'TimeHistory_Story_DisplacementX'+str(g_motion_id)+'.'+str(scaling_id)+'.out',
                       'TimeHistory_Story_AccelerationX'+str(g_motion_id)+'.'+str(scaling_id)+'.out']
-        omega = np.loadtxt('FGU_RC3DF_files\ModalAnalysis_Node_EigenVectors_EigenVal.out',skiprows=1)[0,1]
-        d_o_f = 1
+        omega = np.loadtxt(os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVal.out'),skiprows=1)[0,1]
+        d_o_f = 1        
     else:
         file_names = ['TimeHistory_Horizontal_ReactionsY'+str(g_motion_id)+'.'+str(scaling_id)+'.out',
                       'TimeHistory_Story_DisplacementY'+str(g_motion_id)+'.'+str(scaling_id)+'.out',
                       'TimeHistory_Story_AccelerationY'+str(g_motion_id)+'.'+str(scaling_id)+'.out']
-        omega = np.loadtxt('FGU_RC3DF_files\ModalAnalysis_Node_EigenVectors_EigenVal.out',skiprows=1)[2,1]
+        omega = np.loadtxt(os.path.join('FGU_RC3DF_files', 'ModalAnalysis_Node_EigenVectors_EigenVal.out'),skiprows=1)[2,1]
         d_o_f = 2    
         
 
